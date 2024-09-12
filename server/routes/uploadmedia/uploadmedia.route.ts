@@ -3,7 +3,7 @@ import { RouterResponse } from '../../services/router/router.service';
 import { ParsedRequest } from '../../services/requestParser/requestParser.service';
 
 import file from '../../services/file/file.service';
-import { acceptedMediaExtensions } from '../../models/models';
+import { acceptedMediaExtensions } from '../../definitions/data/data';
 
 import config from '../../config/config';
 

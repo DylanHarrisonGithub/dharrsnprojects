@@ -8,9 +8,9 @@ import HttpService from "../services/http.service";
 
 import { StorageContext } from "../components/storage/storage-context";
 
-import { Theme } from "../models/models";
+import { Theme } from "../definitions/models/Theme/Theme";
 
-import { timeData } from "../models/models";
+import { timeData } from "../definitions/data/data";
 import config from "../config/config";
 import ThreeCard from "../components/home/three-card";
 

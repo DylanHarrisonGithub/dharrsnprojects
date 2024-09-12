@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import { RouterResponse } from '../../services/router/router.service';
 import { ParsedRequest } from '../../services/requestParser/requestParser.service';
 import DB from '../../services/db/db.service';
-import { User } from '../../models/models';
+import { User } from '../../definitions/models/User/User';
 
 export default async (request: ParsedRequest<{ id: number, admin: string, code: string }>): Promise<RouterResponse> => {
 

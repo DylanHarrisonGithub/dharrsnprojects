@@ -1,4 +1,4 @@
-import { User } from '../../models/models';
+import { User } from '../../definitions/models/User/User';
 import { ParsedRequest } from '../../services/requestParser/requestParser.service';
 import { RouterResponse } from '../../services/router/router.service';
 

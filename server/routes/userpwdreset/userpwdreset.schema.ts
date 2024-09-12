@@ -1,24 +1,10 @@
 import { Schema, COMMON_REGEXES } from "../../services/validation/validation.service";
-//{ username?: string, avatar?: string, privilege?: string } 
+import UserModel from "../../definitions/models/User/User";
+
 const userPwdResetSchema: Schema = {
-  username: {
-    type: 'string',
-    attributes: {
-      required: true
-    }
-  },
-  code: {
-    type: 'string',
-    attributes: {
-      required: true
-    }
-  },
-  password: {
-    type: COMMON_REGEXES.PASSWORD_STRONGEST,
-    attributes: {
-      required: false
-    }
-  }
+  username: UserModel.schema.username,
+  code: UserModel.schema.otp,
+  password: UserModel.schema.password
 }
 
 export default userPwdResetSchema;

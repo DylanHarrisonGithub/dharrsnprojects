@@ -1,14 +1,9 @@
 import { Schema, COMMON_REGEXES } from '../../services/validation/validation.service';
+import Schemas from '../../definitions/schemas/schemas';
 
 const mailGenCodeSchema: Schema = {
-  email: {
-    type: COMMON_REGEXES.EMAIL,
-    attributes: { required: true, strLength: { minLength: 5, maxLength: 30 } }
-  },
-  code: {
-    type: 'string',
-    attributes: { required: true }
-  },
+  email: Schemas.email,
+  code: Schemas.otp,
   opt: {
     type: 'boolean',
     attributes: { required: true }

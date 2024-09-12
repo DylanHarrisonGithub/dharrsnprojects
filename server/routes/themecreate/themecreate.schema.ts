@@ -1,4 +1,5 @@
-import { Schema } from "../../services/validation/validation.service"
-import { themeSchema } from "../../models/models"
+import { Schema } from "../../services/validation/validation.service";
+import ThemeModel from "../../definitions/models/Theme/theme";
 
-export default themeSchema;
+
+export default ThemeModel.schema;

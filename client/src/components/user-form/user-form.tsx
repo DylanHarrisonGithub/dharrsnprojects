@@ -1,7 +1,6 @@
 import React from "react";
 import config from "../../config/config";
-
-import { User } from '../../models/models'
+import { User } from "../../definitions/models/User/User";
 
 type Props = {
   user: User,

@@ -3,7 +3,7 @@ import { ParsedRequest } from '../../services/requestParser/requestParser.servic
 
 import db from '../../services/db/db.service';
 
-import { Mail } from '../../models/models';
+import { Mail } from '../../definitions/models/Mail/Mail';
 
 import config from '../../config/config';
 

@@ -5,7 +5,8 @@ import email from '../../services/email/email.service';
 
 import contactEmailTemplate from '../../email-templates/contact.template';
 
-import { Contact, timeData } from "../../models/models"
+import { timeData } from "../../definitions/data/data";
+import { Contact } from '../../definitions/models/Contact/Contact';
 import config from '../../config/config';
 
 const { periods, weekdays, months, daysPerMonth, years, dates, times } = timeData;

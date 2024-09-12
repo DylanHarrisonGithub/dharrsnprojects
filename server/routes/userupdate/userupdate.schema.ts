@@ -1,33 +1,13 @@
 import { Schema } from "../../services/validation/validation.service";
-//{ username?: string, avatar?: string, privilege?: string } 
+import UserModel from "../../definitions/models/User/User";
+
 const userUpdateSchema: Schema = {
-  id: {
-    type: 'number',
-    attributes: {
-      required: true
-    }
-  },
+  id: UserModel.schema.id,
   update: {
     type: {
-      username: {
-        type: 'string',
-        attributes: {
-          required: false,
-          strLength: { minLength: 6 }
-        }
-      },
-      avatar: {
-        type: 'string',
-        attributes: {
-          required: false
-        }
-      },
-      privilege: {
-        type: ['guest', 'user', 'admin'],
-        attributes: {
-          required: false
-        }
-      }
+      username: { ...UserModel.schema.username, attributes: { ...UserModel.schema.username.attributes, required: false } },
+      avatar: { ...UserModel.schema.avatar, attributes: { ...UserModel.schema.avatar.attributes, required: false } },
+      privilege: { ...UserModel.schema.privilege, attributes: { ...UserModel.schema.privilege.attributes, required: false } },
     },
     attributes: {
       required: false

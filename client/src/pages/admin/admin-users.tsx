@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Users from "../../components/admin/users/users";
-import { User } from "../../models/models";
 import HttpService from "../../services/http.service";
 import { ModalContext } from "../../components/modal/modal";
 import { StorageContext } from "../../components/storage/storage-context";
-
-import { acceptedMediaExtensions } from "../../models/models";
+import { acceptedMediaExtensions } from "../../definitions/data/data";
+import { User } from "../../definitions/models/User/User";
 
 const AdminUsers: React.FC<any> = (props: any) => {
 

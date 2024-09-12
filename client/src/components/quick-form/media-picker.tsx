@@ -4,9 +4,8 @@ import Gallery4 from "../gallery/gallery4";
 
 import HttpService from "../../services/http.service";
 
-import { acceptedMediaExtensions } from "../../models/models";
-
 import config from "../../config/config";
+import { acceptedMediaExtensions } from "../../definitions/data/data";
 
 interface MediaPickerProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   init?: { [key: string]: string},

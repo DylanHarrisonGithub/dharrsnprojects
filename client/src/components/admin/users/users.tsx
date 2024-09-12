@@ -9,11 +9,11 @@ import { ModalContext } from '../../modal/modal';
 
 import config from '../../../config/config';
 
-import { User } from '../../../models/models';
 import UserForm from '../../user-form/user-form';
 import { Schema, COMMON_REGEXES } from '../../../services/validation.service';
 import QuickForm, { QuickFormSchemaMetaType } from '../../quick-form/quick-form';
 import { ServicePromise } from '../../../services/services';
+import { User } from '../../../definitions/models/User/User';
 
 type Props = {
   users: User[],

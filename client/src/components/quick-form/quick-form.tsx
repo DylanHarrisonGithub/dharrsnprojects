@@ -2,8 +2,6 @@ import React, { HTMLInputTypeAttribute, InputHTMLAttributes, ReactElement } from
 
 import ValidationService, { Schema, Model } from '../../services/validation.service';
 
-import { acceptedMediaExtensions } from '../../models/models';
-
 export type QuickFormSchemaMetaType = {
   [key: string]: any,
   quickForm?: {

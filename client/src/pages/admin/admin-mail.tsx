@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import HttpService from "../../services/http.service";
 import { ModalContext } from "../../components/modal/modal";
 import { StorageContext } from "../../components/storage/storage-context";
-
-import { Mail } from "../../models/models";
+import { Mail } from "../../definitions/models/Mail/Mail";
 
 const AdminMail: React.FC<{}> = () => {
 

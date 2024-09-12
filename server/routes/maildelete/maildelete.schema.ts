@@ -1,10 +1,8 @@
 import { Schema, COMMON_REGEXES } from '../../services/validation/validation.service';
+import Schemas from '../../definitions/schemas/schemas';
 
 const mailDeleteSchema: Schema = {
-  id: {
-    type: 'string',
-    attributes: { required: true, strLength: { maxLength: 30 } }
-  }
+  id: Schemas.id
 };
 
 export default mailDeleteSchema;

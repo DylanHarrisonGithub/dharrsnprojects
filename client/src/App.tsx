@@ -17,7 +17,7 @@ import Storage, { StorageContext } from './components/storage/storage-context';
 import HttpService from './services/http.service';
 import StorageService from './services/storage.service';
 
-import { defaultTheme } from './models/models';
+import { defaultTheme } from './definitions/data/data';
 
 import config from './config/config';
 import AdminUsers from './pages/admin/admin-users';

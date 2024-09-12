@@ -1,6 +1,6 @@
 import React from "react";
-import { Theme } from "../models/models";
 import { StorageContext } from "../components/storage/storage-context";
+import { Theme } from "../definitions/models/Theme/Theme";
 
 const About: React.FC<any> = (props: any) => {
 

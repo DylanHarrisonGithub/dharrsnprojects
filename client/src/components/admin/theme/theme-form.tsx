@@ -1,5 +1,4 @@
 import React from "react";
-import { Theme, themeSchema, User } from "../../../models/models";
 import HttpService from "../../../services/http.service";
 import { ModalContext } from "../../../components/modal/modal";
 import { StorageContext } from "../../../components/storage/storage-context";
@@ -11,6 +10,7 @@ import ValidationService from "../../../services/validation.service";
 import AspectContainer from "../../../components/aspect-container/aspect-container";
 
 import Gallery2 from "../../../components/gallery/gallery2";
+import { Theme } from "../../../definitions/models/Theme/Theme";
 
 type ThemeForm = Omit<Theme, "id">;
 

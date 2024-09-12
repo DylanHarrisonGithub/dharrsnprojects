@@ -1,5 +1,6 @@
 import { RouterResponse } from '../../services/router/router.service';
-import { Theme, defaultTheme } from '../../models/models';
+import { Theme } from '../../definitions/models/Theme/theme';
+import { defaultTheme } from '../../definitions/data/data';
 import db from '../../services/db/db.service';
 
 export default async (request: any): Promise<RouterResponse> => {

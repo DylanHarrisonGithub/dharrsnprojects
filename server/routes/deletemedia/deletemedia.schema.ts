@@ -1,7 +1,8 @@
 import { Schema } from "../../services/validation/validation.service";
+import Schemas from "../../definitions/schemas/schemas";
 
 const deleteMediaSchema: Schema = {
-  filename: { type: 'string', attributes: { required: true, range: { min: 0, max: 255 }}},
+  filename: Schemas.filename,
 };
 
 export default deleteMediaSchema;

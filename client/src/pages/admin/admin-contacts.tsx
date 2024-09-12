@@ -9,9 +9,7 @@ import { ModalContext } from "../../components/modal/modal";
 import { StorageContext } from "../../components/storage/storage-context";
 
 import HttpService from "../../services/http.service";
-
-import { Contact } from "../../models/models";
-
+import { Contact } from "../../definitions/models/Contact/Contact";
 
 const AdminContacts: React.FC<any> = (props: any) => {
 

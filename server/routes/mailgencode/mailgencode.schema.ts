@@ -1,10 +1,8 @@
 import { Schema, COMMON_REGEXES } from '../../services/validation/validation.service';
+import Schemas from '../../definitions/schemas/schemas';
 
 const mailGenCodeSchema: Schema = {
-  email: {
-    type: COMMON_REGEXES.EMAIL,
-    attributes: { required: true, strLength: { minLength: 5, maxLength: 30 } }
-  }
+  email: Schemas.email
 };
 
 export default mailGenCodeSchema;

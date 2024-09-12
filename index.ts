@@ -11,7 +11,7 @@ import db from './server/services/db/db.service';
 import config from './server/config/config';
 import file from './server/services/file/file.service';
 
-import { User } from './server/models/models';
+import { User } from './server/definitions/models/User/User';
 import crypto from 'crypto';
 import email from './server/services/email/email.service';
 

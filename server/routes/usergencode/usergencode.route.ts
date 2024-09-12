@@ -9,7 +9,7 @@ import authentication from '../../services/authentication/authentication.service
 
 import oneTimePasscodeEmailTemplate from '../../email-templates/onetimepasscode.template';
 
-import { User } from '../../models/models';
+import { User } from '../../definitions/models/User/User';
 
 import config from '../../config/config';
 

@@ -1,5 +1,3 @@
-import { Schema } from "../services/validation.service";
-
 export const acceptedMediaExtensions = {
   image: ['.gif', '.jpg', '.jpeg', '.png', '.heic'],
   video: ['.mov', '.mp4', '.mpeg', '.webm', '.ogg'],
@@ -19,7 +17,7 @@ export const timeData = {
   ] as const,
   years: [...[...Array(40).keys()].map(y => y+2020)] as const,
   dates: [...Array(32).keys()] as const,
-  times: [...[...Array(24).keys()].reduce<string[]>((a,h)=> [
+  times: [...[...Array(24).keys()].reduce<string[]>((a,h)=> [ //should be 24
     ...a, 
     `${(h%12 || 12).toString().padStart(2,'0')}:00${h < 12 ? 'am' : 'pm'}`,
     `${(h%12 || 12).toString().padStart(2,'0')}:15${h < 12 ? 'am' : 'pm'}`,
@@ -28,40 +26,12 @@ export const timeData = {
   ], [])] as const
 };
 
-const { periods, weekdays, months, daysPerMonth, years, dates, times } = timeData;
+export const dbTypes = [
+  'BIGINT' , 'BIGSERIAL' , 'BIT' , 'BIT VARYING' , 'BOOLEAN' , 'BOX' , 'BYTEA' , 'CHARACTER' , 
+  'CHARACTER VARYING' , 'CIDR' , 'CIRCLE' , 'DATE' , 'DOUBLE PRECISION' , 'INET' , 'INTEGER' , 
+  'INTERVAL' , 'JSON' , 'JSONB' , 'LINE' , 'LSEG' , 'MACADDR' , 'MACADDR8' , 'MONEY' , 'NUMERIC' , 
+  'PATH' , 'PG_LSN' , 'POINT' , 'POLYGON' , 'REAL' , 'SMALLINT' , 'SMALLSERIAL' , 'SERIAL' , 
+  'TEXT' , 'TIME' , 'TIMESTAMP' , 'TSQUERY' , 'TSVECTOR' , 'TXID_SNAPSHOT' , 'UUID' , 'XML'
+] as const;
 
-export type User = {
-  id: number,
-  username: string, 
-  privilege: string,
-  avatar: string,
-}
-
-export type Contact = {
-  id: number,
-  email: string,
-  subject: string,
-  message: string,
-  timestamp: number,
-  search: string
-}
-
-export type Mail = {
-  id: number,
-  email: string,
-  // code: string,
-  // salt: string,
-  verified: string
-}
-
-export type Theme = {
-  id: number,
-}
-
-export const themeSchema: Schema = {
-  id: { type: 'string | number', attributes: { required: false }},
-}
-
-export const defaultTheme: Theme = {
-  id: -1,
-}
+export const defaultTheme = { id: -1 };

@@ -5,7 +5,7 @@ import HttpService from "../services/http.service";
 
 import { ModalContext } from "../components/modal/modal";
 import { StorageContext } from "../components/storage/storage-context";
-import { Theme } from "../models/models";
+import { Theme } from "../definitions/models/Theme/Theme";
 
 type FormState = {
   email: string;

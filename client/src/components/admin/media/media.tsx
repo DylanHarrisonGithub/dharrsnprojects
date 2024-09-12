@@ -7,7 +7,8 @@ import MediaViewer from '../../media-viewer/media-viewer';
 import HttpService from '../../../services/http.service';
 
 import config from '../../../config/config';
-import { acceptedMediaExtensions } from '../../../models/models';
+import { acceptedMediaExtensions } from '../../../definitions/data/data';
+
 
 type Props = {
   media: string[],

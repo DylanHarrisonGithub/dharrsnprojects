@@ -1,8 +1,7 @@
 import React from "react";
 
 import config from "../../config/config";
-
-import { acceptedMediaExtensions } from "../../models/models";
+import { acceptedMediaExtensions } from "../../definitions/data/data";
 
 export type MediaViewerProps = { filename: string }
 

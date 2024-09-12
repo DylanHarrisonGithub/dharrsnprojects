@@ -1,21 +1,10 @@
 import { Schema, COMMON_REGEXES } from '../../services/validation/validation.service';
+import UserModel from '../../definitions/models/User/User';
 
 const userdeleteSchema: Schema = {
-  id: { type: 'string | number', attributes: { required: true, range: { min: 0 } }},
-  admin: {
-    type: 'string',
-    attributes: {
-      required: true,
-      strLength: { minLength: 6 }
-    }
-  },
-  code:  {
-    type: 'string',
-    attributes: {
-      required: true,
-      strLength: { minLength: 0, maxLength: 128 }
-    }
-  }
+  id: UserModel.schema.id,
+  admin: UserModel.schema.username,
+  code:  UserModel.schema.otp
 };
 
 export default userdeleteSchema;

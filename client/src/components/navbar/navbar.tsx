@@ -8,8 +8,6 @@ import StorageService from "../../services/storage.service";
 
 import config from "../../config/config";
 
-import { Theme } from "../../models/models";
-
 type Menu = {
   href?: string,
   submenu?: Menu[]

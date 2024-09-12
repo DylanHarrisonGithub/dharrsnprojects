@@ -1,12 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Users from "../../components/admin/users/users";
-import { Theme, themeSchema, User, defaultTheme } from "../../models/models";
 import HttpService from "../../services/http.service";
 import { ModalContext } from "../../components/modal/modal";
 import { StorageContext } from "../../components/storage/storage-context";
-
-import { acceptedMediaExtensions } from "../../models/models";
 
 import MediaPicker from "../../components/quick-form/media-picker";
 import QuickForm, { QuickFormSchemaMetaType } from "../../components/quick-form/quick-form";

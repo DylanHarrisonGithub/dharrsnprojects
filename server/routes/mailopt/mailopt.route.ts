@@ -7,7 +7,7 @@ import DB from '../../services/db/db.service';
 import emailer from '../../services/email/email.service';
 import authentication from '../../services/authentication/authentication.service';
 
-import { Mail } from '../../models/models';
+import { Mail } from '../../definitions/models/Mail/Mail';
 
 import config from '../../config/config';
 import { ServicePromise } from '../../services/services';

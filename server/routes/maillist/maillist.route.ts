@@ -3,10 +3,6 @@ import { ParsedRequest } from '../../services/requestParser/requestParser.servic
 
 import db from '../../services/db/db.service';
 
-import { Mail } from '../../models/models';
-
-import config from '../../config/config';
-
 export default async (request: ParsedRequest<{}>): Promise<RouterResponse> => { 
 
   const maillistRes = await db.row.read('mail');

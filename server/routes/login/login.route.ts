@@ -3,7 +3,7 @@ import DB from '../../services/db/db.service';
 import authentication from '../../services/authentication/authentication.service';
 import crypto from 'crypto';
 
-import { User } from '../../models/models';
+import { User } from '../../definitions/models/User/User';
 
 export default async (request: any): Promise<RouterResponse> => {
 

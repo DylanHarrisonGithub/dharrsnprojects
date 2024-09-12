@@ -1,6 +1,6 @@
 import { RouterResponse } from '../../services/router/router.service';
 import { ParsedRequest } from '../../services/requestParser/requestParser.service';
-import { Contact } from '../../models/models';
+import { Contact } from '../../definitions/models/Contact/Contact';
 import DB from '../../services/db/db.service';
 
 export default async (request: ParsedRequest<{ 
