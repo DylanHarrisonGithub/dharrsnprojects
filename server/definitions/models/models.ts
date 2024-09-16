@@ -2,6 +2,7 @@ import { COMMON_REGEXES, Schema } from "../../services/validation/validation.ser
 import UserModel, { User } from './User/User';
 import MailModel, { Mail } from './Mail/Mail';
 import ContactModel, { Contact } from './Contact/Contact';
+import ThemeModel, { Theme } from "./Theme/theme";
 
 import { dbTypes } from "../data/data";
 
@@ -15,13 +16,15 @@ export type Model = {
 export type ModelTypes = {
   User: User,
   Mail: Mail,
-  Contact: Contact
+  Contact: Contact,
+  Theme: Theme
 }
 
 const ServerModels: { [key: string]: Model } = {
   user: UserModel,
   mail: MailModel,
-  contact: ContactModel
+  contact: ContactModel,
+  theme: ThemeModel
 }
 
 export default ServerModels;
