@@ -70,6 +70,8 @@ app.get('/*', (req, res) => res.sendFile(path.resolve(__dirname, './client', 'in
 
 app.listen(config.PORT || 3000, async () => {
 
+  console.log(config);
+
   // full db delete
   // for (const key of Object.keys(server.models)) {
   //   console.log((await db.table.delete(key)).messages);
@@ -78,7 +80,7 @@ app.listen(config.PORT || 3000, async () => {
   // //!!!! uncomment before deploying !!!!
   // create db tables if they don't already exist
   for (const key of Object.keys(server.models)) {
-    console.log((await db.table.create(key, (<any>server.models)[key])).messages);
+    console.log((await db.table.create(key, (<any>server.models)[key].db)).messages);
   }
 
   // add any missing columns to tables
@@ -86,7 +88,7 @@ app.listen(config.PORT || 3000, async () => {
   for (const key of Object.keys(server.models)) {
     dbtable = (await db.table.read<{ column_name: string, data_type: string }[]>(key)).body;
     if (dbtable) {
-      let { PRIMARY, ...tabledef } = (<any>server.models)[key];
+      let { PRIMARY, ...tabledef } = (<any>server.models)[key].db;
       for (const tdcolumn of Object.keys(tabledef)) {
         if (!dbtable!.filter(dbv => dbv.column_name.toLowerCase() === tdcolumn.toLowerCase()).length) {
           console.log(`Warning: database definition for table ${key} is missing column ${tdcolumn} as defined by this application for ${key} table!`);
