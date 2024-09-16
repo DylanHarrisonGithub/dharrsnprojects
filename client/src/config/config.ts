@@ -7,7 +7,7 @@ const config: {
   ASSETS: { DEVELOPMENT: string, LAN: string, PRODUCTION: string },
 } = {
   ENVIRONMENT: <"PRODUCTION" | "LAN" | "DEVELOPMENT">(process.env.NODE_ENV.toUpperCase() || "PRODUCTION"),
-  APP_NAME: "PRNTCORE",
+  APP_NAME: "APPROOT",
   AUTH_TOKEN_STORAGE_METHOD: "LOCAL",
   APP_STORAGE_METHOD: "LOCAL",
   URI: {

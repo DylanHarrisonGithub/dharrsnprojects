@@ -70,8 +70,6 @@ app.get('/*', (req, res) => res.sendFile(path.resolve(__dirname, './client', 'in
 
 app.listen(config.PORT || 3000, async () => {
 
-  console.log(config);
-
   // full db delete
   // for (const key of Object.keys(server.models)) {
   //   console.log((await db.table.delete(key)).messages);
