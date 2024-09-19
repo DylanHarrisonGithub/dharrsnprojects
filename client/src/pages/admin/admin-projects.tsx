@@ -72,7 +72,7 @@ const AdminProjects: React.FC<any> = (props: any) => {
         />
         <button className={`btn my-4 float-right`}  onClick={() => {  
           (async () => {
-            const res = await HttpService.post('contactcreate', model);
+            const res = await HttpService.post('projectcreate', model);
             if (res.success) {
               modalContext.toast?.('success', 'Message has been received!');
               setModel({thumbnail: '', title: '', links: [], technologies: [], features: [], description: '', media: [], projectType: 'app', id: -1, search: ''});
@@ -105,7 +105,7 @@ const AdminProjects: React.FC<any> = (props: any) => {
       </div>
 
       <div className={`p-1 `}>
-        <InfiniteContentScroller<Project> contentStreamingRoute={'projectsstream'} content={projects} reversed={true} contentSetter={setProjects} search={search} id={id}>
+        <InfiniteContentScroller<Project> contentStreamingRoute={'projectstream'} content={projects} contentSetter={setProjects} search={search} id={id}>
           {
             projects.map((u, i) => (<ProjectDetail key={i} project={u} />))
           }
