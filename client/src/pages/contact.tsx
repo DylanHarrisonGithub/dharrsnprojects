@@ -77,10 +77,10 @@ const Contact: React.FC<any> = () => {
   };
 
   return (
-    <div className="py-16 px-4 mx-auto diamonds">
-      <div className={`mt-16 md:w-3/4 mx-auto border-2 rounded-lg p-8 shadow-2xl ${  `bg-gradient-to-br from-pink-200 via-pink-300 to-pink-200` }`}>
+    <div className="py-16 px-4 mx-auto">
+      <div className={`mt-16 md:w-3/4 mx-auto border-2 rounded-lg p-8 shadow-2xl ${  `bg-gradient-to-br from-slate-400 via-slate-300 to-slate-200` }`}>
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Me</h2>
-        <p className="mb-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to book me for a show? Need details about my availability? Let me know.</p>
+        <p className="mb-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to hire me? Let me know.</p>
         <form action="#" className="space-y-8">
           <div className="">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>

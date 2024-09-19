@@ -1,5 +1,6 @@
 import { COMMON_REGEXES, Schema } from "../../services/validation.service";
 
+// need filepath or url ending in accepted files
 const imageFileRegex = /^(.*\/)?([^\/]+\.(jpg|jpeg|png|gif|bmp|webp|svg))$/i; //optionally beginning with a path ..
 const videoFileRegex = /^(.*\/)?([^\/]+\.(mov|mpeg|mp4|webm|ogg))$/i;
 const audioFileRegex = /^(.*\/)?([^\/]+\.(mp3|wav|ogg|aac))$/i;

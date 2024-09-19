@@ -75,11 +75,12 @@ const Login: React.FC<any> = (props: any) => {
         modalContext.toast?.('error', 'Error occured attempting to login.');
         res.messages.forEach(m => modalContext.toast!('warning', m));
       } else {
+        console.log(res);
         if (res.body?.token) {
           res.messages.forEach(m => modalContext.toast?.('success', m));
           await AuthService.storeToken(res.body.token);
           await StorageService[config.APP_STORAGE_METHOD].store('user', res.body.user );
-          navigate('/home');
+          navigate('/admin');
         } else {
           modalContext.toast?.('error', 'Error occured attempting to login.');
           res.messages.forEach(m => modalContext.toast?.('error', m));
@@ -93,7 +94,7 @@ const Login: React.FC<any> = (props: any) => {
   };
 
   return (
-    <div className="py-16 fan">
+    <div className="py-16">
       <div className="card w-96 bg-base-100 shadow-xl mx-auto mt-16 glass-light">
         <div className="card-body">
           <h2 className="card-title text-white">Login</h2>

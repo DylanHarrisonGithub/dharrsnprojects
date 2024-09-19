@@ -3,7 +3,7 @@ import crypto from 'crypto';
 
 const secret = crypto.randomBytes(64).toString('hex');
 
-const appName = `APPROOT`;
+const appName = `dharrsnprojects`;
 
 const config = {
   APPNAME: appName,
