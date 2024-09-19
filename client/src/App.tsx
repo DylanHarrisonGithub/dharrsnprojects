@@ -25,6 +25,8 @@ import AdminTheme from './pages/admin/admin-theme';
 import MailingList from './components/mailing-list/mailing-list';
 import AdminMail from './pages/admin/admin-mail';
 import Home from './pages/home';
+import Projects from './pages/projects';
+import AdminProjects from './pages/admin/admin-projects';
 
 function App() {
 
@@ -61,7 +63,7 @@ function App() {
       {/* <Storage keys={['token', 'user', 'events', 'eventsBusy', 'theme']}> */}
         <Modal>
           <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <Navbar
+            {/* <Navbar
               brand={config.APP_NAME}
               links={[
                 { title: 'home', href: '/home' }
@@ -79,24 +81,28 @@ function App() {
                   ]
                 }
               ]}
-            />
-            <Routes>
-              <Route path="/" element={<Home />}>
-                <Route index element={<Home />} />
-                <Route path="home" element={<Home />} />
-              </Route>
-              <Route path="contact" element={<Contact />} />
-              <Route path="login" element={<Login />} />
-              <Route path="register" element={<Register />} />
-              <Route path="about" element={<About />} />
-              <Route path="nopage" element={<NoPage />} />
-              <Route path="admin" element={<Admin />} />
-              <Route path="admin/users" element={<AdminUsers/>} />
-              <Route path="admin/theme" element={<AdminTheme/>} />
-              <Route path="admin/mail" element={<AdminMail/>} />
-              <Route path="*" element={<NoPage />} />
-            </Routes>
-            <MailingList/>
+            /> */}
+            <div className={`min-h-screen bg-black`}>
+              <Routes>
+                <Route path="/" element={<Home />}>
+                  <Route index element={<Home />} />
+                  <Route path="home" element={<Home />} />
+                </Route>
+                <Route path="projects" element={<Projects />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="about" element={<About />} />
+                <Route path="nopage" element={<NoPage />} />
+                <Route path="admin" element={<Admin />} />
+                <Route path="admin/users" element={<AdminUsers/>} />
+                <Route path="admin/theme" element={<AdminTheme/>} />
+                <Route path="admin/mail" element={<AdminMail/>} />
+                <Route path="admin/projects" element={<AdminProjects/>} />
+                <Route path="*" element={<NoPage />} />
+              </Routes>
+            </div>
+            {/* <MailingList/> */}
             <Footer 
               links={[
                 { title: 'home', href: '/home' },

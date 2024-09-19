@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Storage keys={['user', 'theme']}>
+    <Storage keys={['user', 'theme', 'token']}>
       <App />
     </Storage>
   </React.StrictMode>

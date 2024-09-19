@@ -2,6 +2,8 @@ import { Schema } from '../../services/validation.service';
 import UserModel, { User } from './User/User';
 import MailModel, { Mail } from './Mail/Mail';
 import ContactModel, { Contact } from './Contact/Contact';
+import ThemeModel, { Theme } from './Theme/Theme';
+import ProjectModel, { Project } from './Project/Project';
 
 import { dbTypes } from "../data/data";
 
@@ -15,13 +17,17 @@ export type Model = {
 export type ModelTypes = {
   User: User,
   Mail: Mail,
-  Contact: Contact
+  Contact: Contact,
+  Theme: Theme,
+  Project: Project
 }
 
 const ServerModels: { [key: string]: Model } = {
   user: UserModel,
   mail: MailModel,
-  contact: ContactModel
+  contact: ContactModel,
+  theme: ThemeModel,
+  project: ProjectModel
 }
 
 export default ServerModels;

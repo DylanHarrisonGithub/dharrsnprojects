@@ -52,7 +52,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
           <h2 className="inline-block text-black">{props.categoryName}</h2>
       }
       {
-        !props.disableBrowseAll &&
+        (!props.disableBrowseAll && props.categoryName) &&
         <h2 className="inline-block float-right mr-1">
           <Link to={"/"+props.categoryName!.replaceAll(' ', '')} className="link link-primary">Browse All</Link>
         </h2>

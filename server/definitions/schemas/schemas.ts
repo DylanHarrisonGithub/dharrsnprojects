@@ -14,7 +14,7 @@ const Schemas: Schema = {
   videoFilename: { type: videoFileRegex, attributes: { required: true, range: { min: 1, max: 255 }}},
   audioFilename: { type: audioFileRegex, attributes: { required: true, range: { min: 1, max: 255 }}},
   id: { type: 'string | number', attributes: { required: true, range: { min: 0 } }},
-  password: { type: COMMON_REGEXES.PASSWORD_STRONGEST, attributes: { required: true, strLength: { minLength: 8, maxLength: 255 }}},
+  password: { type: 'string', attributes: { required: true, strLength: { minLength: 8, maxLength: 255 }}},
   username: { type: usernameRegex, attributes: { required: true, strLength: { minLength: 6, maxLength: 63 }}},
   otp: { type: 'string', attributes: { required: true, strLength: { minLength: 0, maxLength: 128 }}},
   sentence: { type: COMMON_REGEXES.COMMON_WRITING, attributes: { required: true, strLength: { minLength: 1, maxLength: 128 }}},

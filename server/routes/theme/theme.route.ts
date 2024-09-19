@@ -7,7 +7,6 @@ export default async (request: any): Promise<RouterResponse> => {
 
 const res = await db.row.read<Theme[]>('theme');
 
-console.log('theme rout reaced')
   return new Promise<RouterResponse>(resolve => resolve({
     code: 200,
     json: {
