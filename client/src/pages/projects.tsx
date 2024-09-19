@@ -45,7 +45,7 @@ const Projects: React.FC<any> = (props: any) => {
       </div>
 
       <div className={`p-1 `}>
-        <InfiniteContentScroller<Project> contentStreamingRoute={'projectsstream'} content={projects} reversed={true} contentSetter={setProjects} search={search} id={id}>
+        <InfiniteContentScroller<Project> contentStreamingRoute={'projectstream'} content={projects}  contentSetter={setProjects} search={search} id={id}>
           {
             projects.map((u, i) => (<ProjectDetail key={i} project={u} />))
           }

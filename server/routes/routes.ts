@@ -1,3 +1,7 @@
+import projectstreamRoute from './projectstream/projectstream.route';
+import projectstreamSchema from './projectstream/projectstream.schema';
+import projectcreateRoute from './projectcreate/projectcreate.route';
+import projectcreateSchema from './projectcreate/projectcreate.schema';
 import themedeleteRoute from './themedelete/themedelete.route';
 import themedeleteSchema from './themedelete/themedelete.schema';
 import themecreateRoute from './themecreate/themecreate.route';
@@ -60,6 +64,20 @@ export interface Route {
 }
 
 const routes: { [key: string]: Route } = {
+ projectstream: {
+    method: ['GET'],
+    contentType: "application/json",
+    privilege: ['guest'],
+    schema: projectstreamSchema,
+    route: projectstreamRoute 
+  },
+ projectcreate: {
+    method: ['POST'],
+    contentType: "application/json",
+    privilege: ['user'],
+    schema: projectcreateSchema,
+    route: projectcreateRoute 
+  },
  themedelete: {
     method: ['DELETE'],
     contentType: "application/json",
