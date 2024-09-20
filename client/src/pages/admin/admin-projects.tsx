@@ -12,9 +12,10 @@ import { Schema } from "../../services/validation.service";
 import ValidationService from "../../services/validation.service";
 import HttpService from "../../services/http.service";
 import { ModalContext } from "../../components/modal/modal";
+import MediaPicker from "../../components/quick-form/media-picker";
 
 const extendedProjectSchema: Schema<QuickFormSchemaMetaType> = (({ thumbnail, title, links, technologies, features, description, media, projectType }) => ({
-  thumbnail,
+  thumbnail: { ...thumbnail, meta: { quickForm: { CustomInput: MediaPicker, customInputProps: { } }}},
   title,
   links,
   technologies,
@@ -34,14 +35,14 @@ const AdminProjects: React.FC<any> = (props: any) => {
   const { id } = useParams();
 
   const [projects, setProjects] = React.useState<Project[]>([]);
-  const [model, setModel] = React.useState<Project>({thumbnail: '', title: '', links: [], technologies: [], features: [], description: '', media: [], projectType: 'app', id: -1, search: ''});
+  const [model, setModel] = React.useState<Project>({thumbnail: '', title: '', links: [], technologies: [], features: [], description: '', media: [], projecttype: 'app', id: -1, search: ''});
   const [formErrors, setFormErrors] = React.useState<{ key: string, message: string }[]>([]);
   const [touched, setTouched] = React.useState<boolean>(false);
   const [search, setSearch] = React.useState<string>('');
 
   React.useEffect(() => setTheme(storageContext.theme as Theme), [storageContext.theme]);
 
-  const inputHandler = (err: string[], keyvalues: Partial<Pick<Project, "thumbnail" | "title" | "links" | "technologies" | "features" | "description" | "media" | "projectType">>) => {
+  const inputHandler = (err: string[], keyvalues: Partial<Pick<Project, "thumbnail" | "title" | "links" | "technologies" | "features" | "description" | "media" | "projecttype">>) => {
     // prepare new keyvalues and previous keyvalues for comparison
     let prevValueSorted = Object.keys(keyvalues).sort().reduce((accumulator, key) => ({ ...accumulator, [key]: model[key as keyof typeof model]}), {});
     let newValueSorted = Object.keys(keyvalues).sort().reduce((accumulator, key) => ({ ...accumulator, [key]: keyvalues[key as keyof typeof keyvalues]}), {});
@@ -75,7 +76,7 @@ const AdminProjects: React.FC<any> = (props: any) => {
             const res = await HttpService.post('projectcreate', model);
             if (res.success) {
               modalContext.toast?.('success', 'Message has been received!');
-              setModel({thumbnail: '', title: '', links: [], technologies: [], features: [], description: '', media: [], projectType: 'app', id: -1, search: ''});
+              setModel({thumbnail: '', title: '', links: [], technologies: [], features: [], description: '', media: [], projecttype: 'app', id: -1, search: ''});
               setTouched(false);
             } else {
               modalContext.toast?.('error', 'Failed submit message!');

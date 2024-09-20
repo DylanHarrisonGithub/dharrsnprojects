@@ -13,7 +13,7 @@ const requestFilter = [
   'features', 
   'description', 
   'media', 
-  'projectType' 
+  'projecttype' 
 ]
 
 export default async (request: ParsedRequest<Project>): Promise<RouterResponse> => {

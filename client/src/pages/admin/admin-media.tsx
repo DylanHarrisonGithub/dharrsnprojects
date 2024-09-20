@@ -22,6 +22,7 @@ const AdminMedia: React.FC<any> = (props: any) => {
   const [media, setMedia] = React.useState<string[]>([]);
   
   const quickGet = async <T = void,>(route: string, params?: any): Promise<T | void> => HttpService.get<T>(route, params).then(res => {
+    console.log(res);
     if (res.success && res.body) {
       modalContext.toast!('success', `GET request to ${route} successful.`);
       //res.messages?.forEach(m => modalContext.toast!('success', m));
@@ -34,7 +35,7 @@ const AdminMedia: React.FC<any> = (props: any) => {
     }
   });
   return (
-    <div className="py-16 px-2 md:px-4 mx-auto diamonds">
+    <div className="py-16 px-2 md:px-4 mx-auto">
 
       <div className="flex items-center justify-between">
         <h1 className="text-xl gold-text text-center inline-block ml-2 md:ml-8">

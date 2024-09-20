@@ -13,21 +13,9 @@ import ContactModel, { Contact } from "../definitions/models/Contact/Contact";
 import { ModalContext } from "../components/modal/modal";
 import ProjectCard from "../components/project-card";
 
-const { periods, weekdays, months, daysPerMonth, years, dates, times } = timeData;
+import { Project } from "../definitions/models/Project/Project";
 
-const projects: {
-  thumbnail: string,
-  title: string,
-  links: string[],
-  technologies: string[],
-  features: string[],
-  descritpion: string,
-  media: string[],
-  projectType: 'app' | 'demo' | 'webapp',
-  search: string
-}[] = [
-
-];
+import config from "../config/config";
 
 const extendedContactSchema: Schema<QuickFormSchemaMetaType> = (({ email, subject, message }) => ({
   email: { ...email, meta: { quickForm: { placeholder: `youremail@domain.com`, inputClassName: `input input-bordered w-full mb-2` } }},
@@ -43,6 +31,31 @@ const Home: React.FC<any> = (props: any) => {
   const [model, setModel] = React.useState<Pick<Contact, "email" | "subject" | "message">>({ email: "", subject: "", message: "" });
   const [formErrors, setFormErrors] = React.useState<{ key: string, message: string }[]>([]);
   const [touched, setTouched] = React.useState<boolean>(false);
+
+  const [webApps, setWebApps] = React.useState<Project[]>([]);
+  const [webDemos, setWebDemos] = React.useState<Project[]>([]);
+  const [apps, setApps] = React.useState<Project[]>([]);
+
+  React.useEffect(() => {
+    (async () => {
+      const pRes = await HttpService.get<Project[]>('projectstream', { afterID: 0, numrows: 500 });
+      if (pRes && pRes.success && pRes.body) {
+        
+        const temp: { [key in Project['projecttype']]: Project[] } = {
+          app: [],
+          demo: [],
+          webapp: []
+        };
+        pRes.body.forEach(proj => temp[proj.projecttype].push(proj));
+
+        setWebApps(temp.webapp); setWebDemos(temp.demo); setApps(temp.app);
+
+      } else {
+        modalContext.toast?.('alert', 'Failed to load projects data. see console');
+        console.log('Project data fetch errors: ', pRes);
+      }
+    })();
+  },[]);
 
   const inputHandler = (err: string[], keyvalues: Partial<Pick<Contact, "email" | "subject" | "message">>) => {
     // prepare new keyvalues and previous keyvalues for comparison
@@ -88,21 +101,12 @@ const Home: React.FC<any> = (props: any) => {
           <div className=" ml-8 md:m-8 flex-1 w-36 md:w-96">
             <Carousel >
               {
-                (new Array(8)).fill(0).map((v, i) => (
+                (webApps.map((v, i) => (
                   <ProjectCard
-                    project={{
-                      title: 'myProject',
-                      thumbnail: 'http://localhost:3000/public/static/stars.jpg',
-                      links: ['dharrsnprojects.com', 'google.com', 'dharrsn.com'],
-                      technologies: ['react', 'typescript', 'node'],
-                      features: ['draw sprites', 'determine your fate via astrology', 'do a backflip'],
-                      descritpion: 'Here is my project description it can be very long.',
-                      media: ['http://localhost:3000/public/static/stars.jpg'],
-                      projectType: 'app'
-                    }}
-                    key={i}
+                    project={v}
+                    mykey={i}
                   />
-                ))
+                )))
               }
             </Carousel>
           </div>
@@ -123,27 +127,12 @@ const Home: React.FC<any> = (props: any) => {
           <div className=" ml-8 md:m-8 flex-1 w-36 md:w-36">
             <Carousel >
               {
-                (new Array(8)).fill(0).map((v, i) => (
-                  <a href={`#`} className="block p-4 border m-2 rounded-lg shadow-lg transition-transform transform hover:scale-105 w-80 h-[60vh] overflow-y-auto" key={i}>
-                    <img src={`http://localhost:3000/public/static/stars.jpg`} alt="Preview" className="w-full h-40 object-cover rounded-md mb-4" />
-                    <div className="mb-4">
-                      <h3 className="text-xl font-semibold mb-2">Technologies:</h3>
-                      <ul className="list-disc list-inside">
-                        {(new Array(8)).fill(0).map((tech, index) => (
-                          <li key={index} className="text-gray-700 inline-block">{tech}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Points:</h3>
-                      <ul className="list-disc list-inside">
-                        {(new Array(6)).fill(0).map((point, index) => (
-                          <li key={index} className="text-gray-700">{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </a>
-                ))
+                (webDemos.map((v, i) => (
+                  <ProjectCard
+                    project={v}
+                    mykey={i}
+                  />
+                )))
               }
             </Carousel>           
           </div>
@@ -192,7 +181,6 @@ const Home: React.FC<any> = (props: any) => {
                 onInput={inputHandler}
               />
             </div>
-
             <button className={`btn my-4 float-right`} disabled={!touched || !!Object.keys(formErrors).length} onClick={() => {  
               (async () => {
                 const res = await HttpService.post('contactcreate', model);
@@ -206,16 +194,14 @@ const Home: React.FC<any> = (props: any) => {
                 }
               })();
             }}>Submit</button>
-
-
           </div>
           <div className=" w-[1rem] self-stretch bg-slate-400 md:m-8 hidden md:block flex-none"></div>
           <p className="hidden md:block text-4xl flex-1 md:flex-none m-8 md:text-left md:w-[128px]">contact</p>
         </div>
 
         <div className="p-2 block  bg-slate-900 md:mx-16 flex-none">
-          <a className="text-center items-center" href="#projectsDiv3">
-            {/* <svg className=" h-12 mx-auto block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#e6e6e6" d="M2 334.5c-3.8 8.8-2 19 4.6 26l136 144c4.5 4.8 10.8 7.5 17.4 7.5s12.9-2.7 17.4-7.5l136-144c6.6-7 8.4-17.2 4.6-26s-12.5-14.5-22-14.5l-72 0 0-288c0-17.7-14.3-32-32-32L128 0C110.3 0 96 14.3 96 32l0 288-72 0c-9.6 0-18.2 5.7-22 14.5z"/></svg>           */}
+          <a className="text-center items-center" href="#top">
+            <svg className=" h-12 mx-auto block rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#e6e6e6" d="M2 334.5c-3.8 8.8-2 19 4.6 26l136 144c4.5 4.8 10.8 7.5 17.4 7.5s12.9-2.7 17.4-7.5l136-144c6.6-7 8.4-17.2 4.6-26s-12.5-14.5-22-14.5l-72 0 0-288c0-17.7-14.3-32-32-32L128 0C110.3 0 96 14.3 96 32l0 288-72 0c-9.6 0-18.2 5.7-22 14.5z"/></svg>          
           </a>
         </div>
       </div>

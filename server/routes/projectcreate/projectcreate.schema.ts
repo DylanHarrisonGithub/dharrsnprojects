@@ -9,7 +9,7 @@ const projectCreateSchema: Schema = {...(({
   features, 
   description, 
   media, 
-  projectType 
-}) => ({thumbnail, title, links, technologies, features, description, media, projectType }))(ProjectModel.schema)};
+  projecttype 
+}) => ({thumbnail, title, links, technologies, features, description, media, projecttype }))(ProjectModel.schema)};
 
 export default projectCreateSchema;
