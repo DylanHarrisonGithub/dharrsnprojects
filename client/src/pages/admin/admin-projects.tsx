@@ -14,7 +14,7 @@ import HttpService from "../../services/http.service";
 import { ModalContext } from "../../components/modal/modal";
 import MediaPicker from "../../components/quick-form/media-picker";
 
-const extendedProjectSchema: Schema<QuickFormSchemaMetaType> = (({ thumbnail, title, links, technologies, features, description, media, projectType }) => ({
+const extendedProjectSchema: Schema<QuickFormSchemaMetaType> = (({ thumbnail, title, links, technologies, features, description, media, projecttype }) => ({
   thumbnail: { ...thumbnail, meta: { quickForm: { CustomInput: MediaPicker, customInputProps: { } }}},
   title,
   links,
@@ -22,7 +22,7 @@ const extendedProjectSchema: Schema<QuickFormSchemaMetaType> = (({ thumbnail, ti
   features,
   description,
   media,
-  projectType
+  projecttype
 }) as Schema<QuickFormSchemaMetaType>)(ProjectModel.schema);
 
 const AdminProjects: React.FC<any> = (props: any) => {

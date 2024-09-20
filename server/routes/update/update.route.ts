@@ -94,15 +94,7 @@ export default async (request: ParsedRequest<{ username: string, code: string }>
 
       try {
         const rDir = path.resolve(config.ROOT_DIR);
-        const child = exec.spawn('sudo', ['sh', `
-          cp -r public ../ &&
-          sudo git pull &&
-          sudo npm install &&
-          cp -r ../public . &&
-          sudo rm -rf ../public &&
-          sudo pm2 restart index.js &&
-          sudo pm2 save
-        `], { detached: true, stdio: 'inherit', shell: true, cwd: rDir});
+        const child = exec.spawn('sudo', ['sh', 'update.sh'], { detached: true, stdio: 'inherit', shell: true, cwd: rDir});
         child.unref();
 
         return new Promise(res => res({

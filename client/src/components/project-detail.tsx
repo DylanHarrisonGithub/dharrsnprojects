@@ -1,16 +1,6 @@
 import React from 'react';
 import config from '../config/config';
-
-interface Project {
-  title: string;
-  description: string;
-  thumbnail: string;
-  links: string[];
-  technologies: string[];
-  features: string[];
-  media: string[]; // Array of image URLs or video URLs
-  search: string
-}
+import { Project } from '../definitions/models/Project/Project';
 
 interface ProjectDetailProps {
   project: Project;

@@ -22,7 +22,6 @@ const AdminMedia: React.FC<any> = (props: any) => {
   const [media, setMedia] = React.useState<string[]>([]);
   
   const quickGet = async <T = void,>(route: string, params?: any): Promise<T | void> => HttpService.get<T>(route, params).then(res => {
-    console.log(res);
     if (res.success && res.body) {
       modalContext.toast!('success', `GET request to ${route} successful.`);
       //res.messages?.forEach(m => modalContext.toast!('success', m));
