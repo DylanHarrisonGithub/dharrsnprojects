@@ -94,6 +94,7 @@ export default async (request: ParsedRequest<{ username: string, code: string }>
 
       try {
         const rDir = path.resolve(config.ROOT_DIR);
+        await exec.execSync(`sudo chmod +x update.sh`);
         const child = exec.spawn('sudo', ['sh', 'update.sh'], { detached: true, stdio: 'inherit', shell: true, cwd: rDir});
         child.unref();
 
