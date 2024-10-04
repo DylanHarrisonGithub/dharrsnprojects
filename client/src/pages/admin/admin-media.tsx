@@ -34,7 +34,7 @@ const AdminMedia: React.FC<any> = (props: any) => {
     }
   });
   return (
-    <div className="py-16 px-2 md:px-4 mx-auto diamonds">
+    <div className="py-16 px-2 md:px-4 mx-auto">
 
       <div className="flex items-center justify-between">
         <h1 className="text-xl gold-text text-center inline-block ml-2 md:ml-8">

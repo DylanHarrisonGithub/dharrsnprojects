@@ -1,3 +1,5 @@
+import projectdeleteRoute from './projectdelete/projectdelete.route';
+import projectdeleteSchema from './projectdelete/projectdelete.schema';
 import projectstreamRoute from './projectstream/projectstream.route';
 import projectstreamSchema from './projectstream/projectstream.schema';
 import projectcreateRoute from './projectcreate/projectcreate.route';
@@ -64,6 +66,13 @@ export interface Route {
 }
 
 const routes: { [key: string]: Route } = {
+ projectdelete: {
+    method: ['DELETE'],
+    contentType: "application/json",
+    privilege: ['user'],
+    schema: projectdeleteSchema,
+    route: projectdeleteRoute 
+  },
  projectstream: {
     method: ['GET'],
     contentType: "application/json",

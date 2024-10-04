@@ -10,7 +10,7 @@ export type Project = {
   features: string[],
   description: string,
   media: string[],
-  projectType: 'app' | 'demo' | 'webapp',
+  projecttype: 'app' | 'demo' | 'webapp',
   search: string
 }
 
@@ -24,7 +24,7 @@ const ProjectModel: Model = {
     features: `TEXT`,
     descritpion: `TEXT`,
     media: `TEXT`,
-    projectType: `TEXT`,
+    projecttype: `TEXT`,
     search: `TEXT`,
     PRIMARY: `KEY (id)`,
   },
@@ -38,7 +38,7 @@ const ProjectModel: Model = {
     features: { ...Schemas.sentence, attributes: { ...Schemas.sentence.attributes, array: { minLength: 0 } } },
     description: Schemas.paragraph,
     media: { type: 'string', attributes: { required: true, array: { minLength: 0 }}},
-    projectType: { type: ['app', 'demo', 'webapp'], attributes: { required: true }},
+    projecttype: { type: ['app', 'demo', 'webapp'], attributes: { required: true }},
     search: { ...Schemas.dbSafeString, attributes: { ...Schemas.dbSafeString.attributes, required: false }},
   }
 }

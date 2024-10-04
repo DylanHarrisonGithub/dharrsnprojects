@@ -9,7 +9,7 @@ type FooterProps = {
 
 const Footer: React.FC<FooterProps> = ({ links, socials, blurb }) => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <footer className="footer footer-center p-10 text-base-content rounded bg-gradient-to-br from-slate-100 via-slate-200 to-slate-400">
       <div className="grid grid-flow-col gap-4">
         {
           links &&

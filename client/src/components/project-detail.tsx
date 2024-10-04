@@ -1,15 +1,6 @@
 import React from 'react';
-
-interface Project {
-  title: string;
-  description: string;
-  thumbnail: string;
-  links: string[];
-  technologies: string[];
-  features: string[];
-  media: string[]; // Array of image URLs or video URLs
-  search: string
-}
+import config from '../config/config';
+import { Project } from '../definitions/models/Project/Project';
 
 interface ProjectDetailProps {
   project: Project;
@@ -18,7 +9,7 @@ interface ProjectDetailProps {
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
   return (
     <div className="max-w-3xl mx-auto p-6 rounded-lg shadow-lg border border-gray-200 bg-white">
-      <img className="w-full h-48 object-cover rounded-t-lg" src={project.thumbnail} alt={`${project.title} thumbnail`} />
+      <img className="w-full h-48 object-cover rounded-t-lg" src={config.ASSETS[config.ENVIRONMENT] + '/media/' + project.thumbnail} alt={`${project.title} thumbnail`} />
       <h2 className="text-2xl font-semibold mt-4 mb-2">{project.title}</h2>
       <p className="text-gray-700 mb-4">{project.description}</p>
 

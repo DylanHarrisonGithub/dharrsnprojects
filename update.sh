@@ -1,11 +1,7 @@
-cd ..
-cp -r /home/app-root/app-root-deploy/public ./
-cd app-root-deploy
+cp -r public ../
 sudo git pull
 sudo npm install
-cd ..
-cp -r public /home/app-root/app-root-deploy
-sudo rm -rf public
-cd app-root-deploy
+cp -r ../public .
+sudo rm -rf ../public
 sudo pm2 restart index.js
 sudo pm2 save

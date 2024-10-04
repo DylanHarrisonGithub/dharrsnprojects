@@ -7,11 +7,10 @@ import config from '../../config/config';
 export default async (request: ParsedRequest<{}>): Promise<RouterResponse> => { 
 
   const rootSize = await file.getDirectorySize('');
-  const mediaSize = await file.getDirectorySize('public/media');
-  const tracksSize = await file.getDirectorySize('public/tracks');
+  const mediaSize = await file.getDirectorySize('public');
 
-  //&& rootSize.body  && mediaSize.body  && tracksSize.body
-  if (!(rootSize.success  && mediaSize.success && tracksSize.success)) {
+  //&& rootSize.body  && mediaSize.body 
+  if (!(rootSize.success  && mediaSize.success)) {
     return new Promise(res => res({
       code: 500,
       json: {
@@ -19,8 +18,7 @@ export default async (request: ParsedRequest<{}>): Promise<RouterResponse> => {
         messages: [ 
           `SERVER - ROUTES - CALCHDUSAGE - Error calculating hd usage.`,
           ...rootSize.messages,
-          ...mediaSize.messages,
-          ...tracksSize.messages
+          ...mediaSize.messages
         ]
       }
     }));
@@ -33,13 +31,11 @@ export default async (request: ParsedRequest<{}>): Promise<RouterResponse> => {
       messages: [ 
         `SERVER - ROUTES - CALCHDUSAGE - HD usage successfully calculated.`,
         ...rootSize.messages,
-        ...mediaSize.messages,
-        ...tracksSize.messages
+        ...mediaSize.messages
       ],
       body: {
         rootSizeBytes: rootSize.body,
         mediaSizeBytes: mediaSize.body,
-        tracksSizeBytes: tracksSize.body,
         maxSizeGB: config.MAX_HD_SIZE_GB
       }
     }
