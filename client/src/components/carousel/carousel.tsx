@@ -36,13 +36,21 @@ const useIsOverflow = (ref: React.RefObject<any>, callback?: (hasOverflow: boole
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
 
   const ref = React.useRef<HTMLDivElement>(null);
-  const isOverflow = useIsOverflow(ref);
+  //const isOverflow = useIsOverflow(ref);
+  const [isOverflow, setIsOverflow] = React.useState<boolean>(false);
 
   //const [scroll, setScroll] = React.useState<number>(0);
+  useEffect(() => {
+    const checkOverflow = () => setIsOverflow(ref.current!! && (ref.current.scrollWidth > ref.current.clientWidth));
+    window.addEventListener('resize', checkOverflow);
+    return () => window.removeEventListener('resize', checkOverflow);
+  }, [])
+
   useEffect(() => {
     if (props.initScrollToItem) {
       ref.current!.scrollLeft += props.initScrollToItem*(ref.current!.scrollWidth/props.children.length);
     }
+    ref?.current && setIsOverflow(ref.current.scrollWidth > ref.current.clientWidth) 
   }, [props.children])
 
   return (

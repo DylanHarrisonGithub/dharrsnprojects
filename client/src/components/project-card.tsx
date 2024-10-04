@@ -1,15 +1,18 @@
 import React from 'react';
 import { Project } from '../definitions/models/Project/Project';
 import config from '../config/config';
+import { useNavigate } from 'react-router-dom';
 
 interface ProjectCardProps {
   project: Project;
-  mykey: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, mykey }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+
+  const navigate = useNavigate();
+
   return (
-    <a href={`/projects/?id=${project.id}`} className="block p-4 border rounded-lg shadow-lg transition-transform transform hover:scale-105 w-80 h-[60vh] overflow-y-auto" key={mykey}>
+    <div onClick={() => navigate(`/projects?id=${project.id}`)} className="block p-4 border rounded-lg shadow-lg transition-transform transform hover:scale-105 w-80 h-[60vh] overflow-y-auto cursor-pointer">
       <img className="w-full h-48 object-cover" src={config.ASSETS[config.ENVIRONMENT] + '/media/' + project.thumbnail} alt={`${project.title} thumbnail`} />
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
@@ -42,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, mykey }) => {
           </ul>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 

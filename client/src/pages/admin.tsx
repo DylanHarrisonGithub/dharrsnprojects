@@ -334,7 +334,7 @@ const Admin: React.FC<any> = (props: any) => {
       </div>
 
       <div className='bg-gradient-to-br from-rose-200 via-yellow-400 to-rose-200 text-center rounded-lg p-1 m-1  md:p-8 md:m-8'>
-        <h1 className='py-8'>Site Maintenance v-1.02</h1>
+        <h1 className='py-8'>Site Maintenance version 1.0</h1>
         <Gallery2>
         {
           maintenanceButtons.map((b, i) => (
