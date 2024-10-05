@@ -11,8 +11,10 @@ export type ParsedRequest<T = any> = {
   host: string,
   route: string,
   token: any,
+  headers: any,
   params: T,
-  files: any
+  files: any,
+  fullRequest: express.Request
 }
 
 const requestParser = ((): typeof service extends Service ? typeof service : never => {
@@ -53,8 +55,10 @@ const requestParser = ((): typeof service extends Service ? typeof service : nev
         route: route,
         host: req.get('Host') || '',
         token: token,
+        headers: req.headers,
         params: (req.method === 'GET' || req.method === 'DELETE') ? req.query : req.body,
-        files: req.files
+        files: req.files,
+        fullRequest: req
       }
     }));
   }

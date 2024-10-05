@@ -34,8 +34,23 @@ const UserModel: Model = {
   schema: {
     ...(({ id, username, email, password, otp, privilege }) => ({ id, username, email, password, otp, privilege }))(Schemas),
     avatar: Schemas.imageFilename
-  }
+  },
 
-}
+};
+
+const map: (user: Partial<User>) => { [K in keyof typeof UserModel.db]: string | number } = (user) => ({
+  id: `SERIAL`,
+  username: 'TEXT',
+  email: `TEXT`,
+  password: 'TEXT',
+  salt: 'TEXT',
+  privilege: `TEXT`,
+  avatar: `TEXT`,
+  reset: `TEXT`,
+  resetstamp: `TEXT`,
+  tries: `NUMERIC`,
+  PRIMARY: 'KEY (username)' 
+})
+
 
 export default UserModel;

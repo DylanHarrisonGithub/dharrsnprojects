@@ -24,8 +24,9 @@ const config = {
   MAX_HD_SIZE_GB: process.env[`${appName.toUpperCase()}_MAX_HD_SIZE_GB`] || 20,
   REPOSITORY: {
     URL: process.env[`${appName.toUpperCase()}_REPO_URL`],
-    BRANCH: process.env[`${appName.toUpperCase()}_REPO_BRANCH`]|| 'main',
-    PAT: process.env[`${appName.toUpperCase()}_REPO_PAT`]
+    BRANCH: process.env[`${appName.toUpperCase()}_REPO_BRANCH`] || 'main',
+    PAT: process.env[`${appName.toUpperCase()}_REPO_PAT`],
+    SECRET: process.env[`${appName.toUpperCase()}_REPO_SECRET`]
   }
 };
 

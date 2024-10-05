@@ -12,6 +12,7 @@ const unionRegex = (...regexes: RegExp[]) => new RegExp(regexes.map(regex => reg
 export type Model = {
   db?: { PRIMARY: `KEY (${string})` } | { [key: string]: typeof dbTypes[number] } & { PRIMARY: any }
   schema: Schema
+  //map?: (user: Partial<T>) => { [K in keyof typeof this.db]: string | number }
 }
 
 export type ModelTypes = {
